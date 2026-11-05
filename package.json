@@ -1,0 +1,12 @@
+{
+  "name": "notes-os",
+  "version": "1.0.1",
+  "private": true,
+  "type": "module",
+  "description": "A quiet operating system for your thoughts.",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node verify.mjs",
+    "package:edge": "node package-extension.mjs"
+  }
+}

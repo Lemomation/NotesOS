@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9e1d2">
+  <meta name="description" content="Notes OS. A quiet operating system for your thoughts. A locally stored, interactive desktop with notes, a canvas, files, a terminal, and a little room to think.">
+  <title>Notes OS — A little room to think</title>
+  <link rel="icon" href="icons/icon-32.png">
+  <link rel="stylesheet" href="css/tokens-and-reset.css">
+  <link rel="stylesheet" href="css/desktop-and-wm.css">
+  <link rel="stylesheet" href="css/apps.css">
+</head>
+<body>
+  <div id="desktop">
+    <div id="wallpaper-stage" aria-hidden="true"></div>
+    <header id="menubar" aria-label="System menu bar"></header>
+    <div class="desktop-signature" aria-hidden="true"><span class="signature-title">Notes OS<span class="signature-dot">®</span></span><span>A LITTLE ROOM TO THINK.</span><i>Personal edition · 01</i></div>
+    <section id="desktop-icons" aria-label="Desktop files"></section>
+    <button id="focus-widget" class="focus-widget" aria-label="Open Tempo focus timer"></button>
+    <div id="windows-layer" aria-label="Application windows"></div>
+    <div id="snap-preview" hidden aria-hidden="true"></div>
+    <nav id="dock" aria-label="Application dock"></nav>
+    <div id="desktop-hint"><kbd>Ctrl</kbd><span>+</span><kbd>K</kbd><span>Find a little of everything</span></div>
+  </div>
+  <div id="menu-popover" class="popover" hidden></div>
+  <div id="context-menu" class="popover" role="menu" hidden></div>
+  <section id="control-center" class="popover control-center" aria-label="Control Center" hidden></section>
+  <div id="spotlight-modal" class="modal-backdrop" hidden></div>
+  <div id="expose-overlay" class="expose-overlay" hidden></div>
+  <div id="dialog-layer" hidden></div>
+  <div id="notification-area" aria-live="polite" aria-atomic="false"></div>
+  <div id="boot-screen" class="boot-screen" aria-label="Starting Notes OS"><div class="boot-brand">Notes<span>OS</span><sup>®</sup></div><div class="boot-line"><i></i></div><p>Make yourself at home.</p><button id="skip-boot">Enter desktop <span>↵</span></button></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
