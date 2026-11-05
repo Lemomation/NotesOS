@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Notes OS — Personal New Tab",
   "short_name": "Notes OS",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A private, local new-tab workspace for notes, ideas, focus, and calm.",
   "offline_enabled": true,
   "incognito": "not_allowed",

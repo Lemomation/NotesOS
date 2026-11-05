@@ -14,7 +14,7 @@
 
 No server, account, or dependency installation is needed to use the extension. Only the `storage` permission is requested—no browsing-history access, website permissions, or content scripts.
 
-**Updating?** Replace the files in your existing extension folder, click **Reload** on its Edge extension card, then open a fresh tab. Do not uninstall it to update. Version **1.0.1** fixes the editor losing focus after each autosave.
+**Updating?** Replace the files in your existing extension folder, click **Reload** on its Edge extension card, close all older Notes OS tabs, then open a fresh tab. Do not uninstall it to update. Version **1.0.2** fixes false recovery copies during typing and retains the autosave focus fix. Existing recovered notes are preserved for you to review.
 
 ## Inside
 
@@ -40,7 +40,7 @@ A proximity-responsive dock, interruptible window animations, panel transitions,
 - The localhost preview uses **localStorage** and has a separate workspace from the extension.
 - Notes OS makes no remote API calls and does not upload your workspace.
 
-Open tabs receive committed workspace updates. Conflicting edits to the same note can produce a **recovered copy** rather than silently replacing the other version. This is not a collaborative editor or cloud-sync service; avoid simultaneously editing the same note in several tabs and keep backups of important work.
+Open tabs receive committed workspace updates. Independent field edits merge without making copies. If two tabs genuinely change the same text from a shared baseline, the arriving edit stays on the original note ID and the displaced text is kept as a **recovered copy**. Normal consecutive typing does not create recovery notes. This is not a collaborative editor or cloud-sync service; keep backups of important work.
 
 **Settings → Your workspace → Workspace JSON** exports notes, canvas, and preferences, but not uploaded image bytes. **Full backup** includes those images. Use **Import** to transfer a backup from the localhost preview or another installation; it asks before replacing the workspace.
 

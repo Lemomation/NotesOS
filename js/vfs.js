@@ -1,4 +1,5 @@
 import { uid } from './utils.js';
+import { equalData } from './workspace-controller.js';
 
 export const STORAGE_KEY = 'notes-os.workspace.v1';
 const defaults = { theme: 'light', motion: 'system', wallpaper: 'topographic', accent: '#b85f40', soundEnabled: false, workspace: 1, scratchpad: 'Less noise.\nMore room for the good stuff.', desktopPositions: {} };
@@ -150,7 +151,7 @@ export function createVFS(storage) {
       const probe = createVFS({ getItem: key => key === STORAGE_KEY ? raw : null, setItem() {} });
       if (probe.getStorageError()) return;
       const incoming = probe.getState();
-      if (JSON.stringify(state) === JSON.stringify(incoming)) return;
+      if (equalData(state, incoming)) return;
       state = incoming;
       emit({ type: 'reset', external: true, storageError });
     } catch (error) { storageError = `Another tab changed the workspace, but the update could not be read: ${error.message}`; emit({ type: 'storage', storageError }); }

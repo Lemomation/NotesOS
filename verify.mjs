@@ -10,6 +10,7 @@ import { tokenize, executeCommand } from './js/terminal.js';
 import { focusTimer, formatTime } from './js/sound.js';
 import { verifyMotion } from './verify-motion.mjs';
 import { verifyStorage } from './verify-storage.mjs';
+import { verifyConflicts } from './verify-conflicts.mjs';
 import { mergeWorkspaceCommit, validWorkspaceShape } from './js/workspace-controller.js';
 import { validateWallpaperDescriptor, validateSvgWallpaper, wallpaperFit, createMemoryWallpaperStore } from './js/wallpaper-store.js';
 import { parseBackup } from './js/backup.js';
@@ -100,7 +101,7 @@ check('Simultaneous note body conflicts create one recovered copy',()=>{
   const base=seedWorkspace(),current=structuredClone(base),incoming=structuredClone(base),id=base.notes[0].id;
   current.notes[0].body='First tab';incoming.notes[0].body='Second tab';
   const merged=mergeWorkspaceCommit({current,incoming,base,events:[{type:'notes',id}],now:777});
-  assert.equal(merged.notes.find(n=>n.id===id).body,'First tab');const recovered=merged.notes.find(n=>n.id===`${id}-recovered-777`);assert.equal(recovered.body,'Second tab');assert(recovered.tags.includes('recovered'));
+  assert.equal(merged.notes.find(n=>n.id===id).body,'Second tab');const recovered=merged.notes.find(n=>n.id===`${id}-recovered-777`);assert.equal(recovered.body,'First tab');assert(recovered.tags.includes('recovered'));
 });
 check('Preference and canvas commits merge without replacing notes',()=>{
   const base=seedWorkspace(),current=structuredClone(base),incoming=structuredClone(base);current.notes[0].title='Live note';incoming.prefs.theme='dark';incoming.canvas.nodes[0].x=500;
@@ -119,5 +120,6 @@ check('Edge manifest requests only storage and overrides New Tab',()=>{
   const manifest=extensionManifest;assert.equal(manifest.manifest_version,3);assert.deepEqual(manifest.permissions,['storage']);assert.equal(manifest.chrome_url_overrides.newtab,'index.html');assert.equal(manifest.background.type,'module');assert(!manifest.host_permissions);assert(!manifest.content_scripts);
 });
 await verifyStorage(check);
+await verifyConflicts(check);
 await verifyMotion(check);
 console.log(`\n${checks.length + 2} checks passed. Browser layout and interaction tests are a separate acceptance pass.\n`);

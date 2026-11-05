@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.2 — 2026-11-05
+
+### Fixed
+
+- Reordered JSON fields and timestamp-only changes no longer trigger false recovered notes.
+- Consecutive edits retain their actual baseline through slow saves rather than being mistaken for competing edits.
+- Conflicts are checked per edited field; changing a favorite in one tab does not conflict with typing in another.
+- Genuine competing text edits keep the active writer on the original note ID and preserve the displaced text as a recovered copy.
+- Retried saves are idempotent across service-worker restarts, and a failed write no longer blocks all later saves.
+- Canvas merges preserve independent card edits and respect intentional removal.
+
+Existing notes and recovered copies are not deleted or automatically cleaned up. Save tests now exercise the actual service and merge logic, including storage that reorders object keys, two-tab edits, failed writes, and lost acknowledgements.
+
 ## 1.0.1 — 2026-11-05
 
 ### Fixed

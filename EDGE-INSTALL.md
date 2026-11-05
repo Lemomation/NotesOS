@@ -23,7 +23,7 @@ No server or Node.js installation is needed to use the extension. It requests on
 3. On `edge://extensions`, find Notes OS and click **Reload**.
 4. Close older Notes OS tabs and open a fresh new tab.
 
-**Do not remove and reinstall the extension to update it.** Reusing the same folder preserves its identity and stored data. Version **1.0.1** fixes typing losing focus after autosave.
+**Do not remove and reinstall the extension to update it.** Reusing the same folder preserves its identity and stored data. Version **1.0.2** fixes false recovered copies during typing as well as retaining the 1.0.1 focus fix. Close every older Notes OS tab after reloading so no stale copy of the save code is still running. Existing recovered notes are preserved; review them before removing any.
 
 If using the locally built extension folder, rebuilding it and clicking **Reload** is sufficient.
 
